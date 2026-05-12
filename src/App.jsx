@@ -1,27 +1,30 @@
 import { Routes, Route } from "react-router-dom";
 
-// import Home from "./pages/Home";
-// import About from "./pages/About";
-// import Contact from "./pages/Contact";
-// import NotFound from "./pages/NotFound";
+// Pages
+import Dashboard from "./pages/dashboard.jsx";
+import Learning from "./pages/myLearning.jsx";
 
-// import Navbar from "./components/Navbar";
-import Dashboard from "./pages/dashboard";
+// Components
+import Sidebar from "./components/Sidebar"; // Make sure this path matches your file structure
 
 function App() {
   return (
-    <>
-      {/* <Navbar /> */}
+    /* Main Layout Wrapper */
+    <div className="flex w-full min-h-screen bg-[#F8F9FA] font-sans text-gray-800">
+      
+      {/* Dynamic Page Content Area */}
+      <div className="flex-1 overflow-y-auto">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/my-learning" element={<Learning />} />
+          {/* Add more routes here */}
+        </Routes>
+      </div>
 
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        {/* <Route path="/about" element={<About />} /> */}
-        {/* <Route path="/contact" element={<Contact />} /> */}
-
-        {/* 404 Page */}
-        {/* <Route path="*" element={<NotFound />} /> */}
-      </Routes>
-    </>
+      {/* Global Right Sidebar */}
+      <Sidebar />
+      
+    </div>
   );
 }
 
